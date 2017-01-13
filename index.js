@@ -1,0 +1,1 @@
+require('./lambda/index.js');
