@@ -1,3 +1,4 @@
+var response_helpers = require('./response_helpers');
 // Handlers for the commands/behaviors
 function sendCommand(callback, command){
   var pubnub = require("pubnub")({
@@ -10,7 +11,10 @@ function sendCommand(callback, command){
   Publish Messages
   --------------------------------------------------------------------------- */
   console.log(process.env.PUB_NUB_SUBSCRIBE_KEY);
-  var message = { "Command" : command.command };
+  var message = {
+    "command" : command.command,
+    "drone"   : 'Alpha'
+  };
   pubnub.publish({
       channel   : process.env.PUB_NUB_CHANNEL_KEY,
       message   : message,
@@ -25,9 +29,10 @@ function sendCommand(callback, command){
   const sessionAttributes = {};
 
   callback(sessionAttributes,
-      helpers.buildSpeechletResponse('Sky Net', command.message, null, false));
+      response_helpers.buildSpeechletResponse('Sky Net', command.message, null, false));
 }
 
+// EXPORTS //
 module.exports = {
   /**
    * Called when the user specifies an intent for this skill.
@@ -42,13 +47,18 @@ module.exports = {
     if (intentName === 'Start'){
       console.log('Flying!');
       var command = {
-        command: 'fly',
+        command: 'FLY',
         message: 'telling the drones to fly'
       }
     } else if (intentName === 'Left') {
       var command = {
-        command: 'left',
+        command: 'LEFT',
         message: 'skynet is on its way left'
+      }
+    } else if (intentName === 'Land'){
+      var command = {
+        command: 'LAND',
+        message: 'skynet is going down'
       }
     } else {
       throw new Error('Invalid intent');

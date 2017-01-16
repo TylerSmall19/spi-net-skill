@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node lambda/test.js",
     "start": "node index.js"
   },
-  "author": "Jon Higgenson, Tyler Small, Kevin Goltermann",
+  "author": {
+    "email": "tylersmall.user@gmail.com",
+    "name" : "Jon Higgenson, Tyler Small, Kevin Goltermann"
+  },
   "license": "ISC",
   "dependencies": {
     "dotenv": "^4.0.0",
