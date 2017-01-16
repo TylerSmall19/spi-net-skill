@@ -10,7 +10,6 @@ function sendCommand(callback, command){
   /* ---------------------------------------------------------------------------
   Publish Messages
   --------------------------------------------------------------------------- */
-  console.log(process.env.PUB_NUB_SUBSCRIBE_KEY);
   var message = {
     "command" : command.command,
     "drone"   : 'Alpha'
@@ -29,7 +28,7 @@ function sendCommand(callback, command){
   const sessionAttributes = {};
 
   callback(sessionAttributes,
-      response_helpers.buildSpeechletResponse('Sky Net', command.message, null, false));
+      response_helpers.buildSpeechletResponse('Sky Net', command.message, 'I\'m sorry. I didn\' catch that.', true));
 }
 
 // EXPORTS //
@@ -50,6 +49,7 @@ module.exports = {
         command: 'FLY',
         message: 'telling the drones to fly'
       }
+      sendCommand(callback, command);
     } else if (intentName === 'Left') {
       var command = {
         command: 'LEFT',
@@ -60,9 +60,10 @@ module.exports = {
         command: 'LAND',
         message: 'skynet is going down'
       }
+    } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
+        SESSION_HELPERS.handleSessionEndRequest(callback);
     } else {
-      throw new Error('Invalid intent');
+        throw new Error('Invalid intent');
     }
-    sendCommand(callback, command);
   }
 }

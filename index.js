@@ -1,7 +1,7 @@
 // require('dotenv').load();
-var intentHandlers  = require('./lambda/intent_handlers');
-var sessionHelpers  = require('./lambda/session_helpers');
-var responseHelpers = require('./lambda/response_helpers');
+const INTENT_HANDLERS  = require('./lambda/intent_handlers');
+const SESSION_HELPERS  = require('./lambda/session_helpers');
+const RESPONSE_HELPERS = require('./lambda/response_helpers');
 
 // --------------- Main handler -----------------------
 
@@ -24,25 +24,31 @@ exports.handler = (event, context, callback) => {
 
 
       if (event.session.new) {
-          sessionHelpers.onSessionStarted({ requestId: event.request.requestId }, event.session);
+          SESSION_HELPERS.onSessionStarted({ requestId: event.request.requestId }, event.session);
       }
 
       if (event.request.type === 'LaunchRequest') {
-          console.log('Intent Requested!');
           onLaunch(event.request,
               event.session,
               (sessionAttributes, speechletResponse) => {
-                  callback(null, responseHelpers.buildResponse(sessionAttributes, speechletResponse));
+                  callback(null, RESPONSE_HELPERS.buildResponse(sessionAttributes, speechletResponse));
               });
       } else if (event.request.type === 'IntentRequest') {
-          intentHandlers.onIntent(event.request,
-              event.session,
-              (sessionAttributes, speechletResponse) => {
-                  callback(null, responseHelpers.buildResponse(sessionAttributes, speechletResponse));
-              });
+          console.log('Intent Requested!');
+          callback(null,
+            RESPONSE_HELPERS.buildResponse({},
+              RESPONSE_HELPERS.buildSpeechletResponse(
+                'Drone', 'output', 'repromptText', true)));
+
+          // INTENT_HANDLERS.onIntent(event.request,
+          //     event.session,
+          //     (sessionAttributes, speechletResponse) => {
+
+          //         callback(null, RESPONSE_HELPERS.buildResponse(sessionAttributes, speechletResponse));
+          //     });
       } else if (event.request.type === 'SessionEndedRequest') {
-          onSessionEnded(event.request, event.session);
-          callback(null, 'Thank you for flying with SkyNet');
+          SESSION_HELPERS.onSessionEnded(event.request, event.session);
+          callback();
       }
   } catch (err) {
       callback(err);
