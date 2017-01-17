@@ -1,3 +1,5 @@
+'use strict';
+
 // --------------- Helpers that build all of the responses -------------------- //
 module.exports = {
     buildSpeechletResponse: function (title, output, repromptText, shouldEndSession) {

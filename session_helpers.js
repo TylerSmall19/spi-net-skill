@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   onSessionStarted: function (sessionStartedRequest, session){
     console.log(`session-request: ${sessionStartedRequest} ---- session: ${session}`);
