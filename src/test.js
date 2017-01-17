@@ -13,12 +13,12 @@ var event = {
     "new": false
   },
   "request": {
-    "type": "LaunchRequest",
+    "type": "IntentRequest",
     "requestId": "EdwRequestId.6c0242e1-272d-431a-a8d8-8199d6d96ced",
     "locale": "en-US",
     "timestamp": "2017-01-16T18:13:43Z",
     "intent": {
-      "name": "Fly",
+      "name": "Back",
       "slots": {}
     }
   },
