@@ -4,7 +4,7 @@
 ### Set Up (Prerequisites)
 1. Set up the required [AWS](https://aws.amazon.com/account/) and [PubNub](https://admin.pubnub.com/#/register?pi_visitorid=219166828&psc=WC-Tracking&pt=wc-tracking) accounts.
 2. Ensure you have a current version of [Node.js](https://nodejs.org/en/download/) installed. You can check versions with `node -v`.
-3. Set up a [PubNub channel]() and keep the Pub/Sub keys given for later reference. (You should have been prompted to create an app when you set up the account)
+3. Set up a [PubNub channel](https://admin.pubnub.com/#/register?pi_visitorid=219166828&psc=WC-Tracking&pt=wc-tracking) and keep the Pub/Sub keys given for later reference. (You should have been prompted to create an app when you set up the account)
 
 This portion of the set up will be the most involved, but you should have an app fully functional within 10 minutes or earlier, depending on the familiarity you have with AWS (Amazon Web Services) Lambda, Pub Nub, and the Alexa Skills interface.
 

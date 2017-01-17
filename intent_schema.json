@@ -23,6 +23,21 @@
     },
     {
       "intent": "Back"
+    },
+    {
+      "intent": "TurnLeft"
+    },
+    {
+      "intent": "TurnRight"
+    },
+    {
+      "intent": "FrontFlip"
+    },
+    {
+      "intent": "BackFlip"
+    },
+    {
+      "intent": "Patrol"
     }
   ]
 }

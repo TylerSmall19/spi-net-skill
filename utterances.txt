@@ -2,26 +2,34 @@ Fly welcome me
 Fly fly
 Fly take to the air
 Fly send out the drones
+
 Left left
 Left fly left
 Left go left
 Left issue left
+Left move left
+
 Land land
 Land stop
 Land fall
 Land end
+
 Right right
 Right fly right
 Right go right
 Right issue right
+Right move right
+
 Up up
 Up climb
 Up gain altitude
-Up asscend
+Up ascend
+
 Down down
 Down drop
 Down lose altitude
 Down descend
+
 Forward forward
 Forward move forward
 Forward fly forward
@@ -29,6 +37,7 @@ Forward straight
 Forward fly straight
 Forward flystraight
 Forward move straight
+
 Back back
 Back skynet back
 Back fly back
@@ -38,3 +47,32 @@ Back send back
 Back issue back
 Back retreat back
 Back retreat
+
+TurnLeft turn left
+TurnLeft turn west
+TurnLeft rotate left
+TurnLeft turn counter clockwise
+
+TurnRight turn right
+TurnRight turn east
+TurnRight rotate right
+TurnRight turn clockwise
+
+FrontFlip flip
+FrontFlip flip forward
+FrontFlip front flip
+FrontFlip forward flip
+FrontFlip impress me
+
+BackFlip flip backward
+BackFlip backward flip
+BackFlip back flip
+BackFlip impress me again
+
+Patrol patrol
+Patrol send out the patrol
+Patrol search
+Patrol send the search party
+Patrol find them
+Patrol find him
+Patrol find her
