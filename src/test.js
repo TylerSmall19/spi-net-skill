@@ -65,7 +65,7 @@ var event = {
     "locale": "en-US",
     "timestamp": "2017-01-16T18:13:43Z",
     "intent": {
-      "name": "Start",
+      "name": "Fly",
       "slots": {}
     }
   },
