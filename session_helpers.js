@@ -1,4 +1,5 @@
 'use strict';
+var responseHelpers = require('./response_helpers');
 
 module.exports = {
   onSessionStarted: function (sessionStartedRequest, session){
@@ -6,11 +7,11 @@ module.exports = {
   },
 
   handleSessionEndRequest: function (callback) {
-    const cardTitle = 'Session Ended';
+    const cardTitle = 'Skynet Descends...';
     const speechOutput = 'Thank you for flying with Spy Net.';
     // Setting this to true ends the session and exits the skill.
     const shouldEndSession = true;
 
-    callback({}, RESPONSE_HELPERS.buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
+    callback({}, responseHelpers.buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
   }
 }
