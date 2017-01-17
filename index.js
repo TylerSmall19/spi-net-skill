@@ -40,6 +40,14 @@ exports.handler = (event, context, callback) => {
               });
       } else if (event.request.type === 'SessionEndedRequest') {
           sessionHelpers.onSessionEnded(event.request, event.session);
+
+          var command = {
+            command: 'LAND',
+            message: 'skynet is ending its flight. Thank you for flying with us.'
+          }
+
+          intentHandlers.sendMessage(callback, command);
+
           callback();
       }
   } catch (err) {

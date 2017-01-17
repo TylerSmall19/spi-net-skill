@@ -8,10 +8,14 @@ module.exports = {
 
   handleSessionEndRequest: function (callback) {
     const cardTitle = 'Skynet Descends...';
-    const speechOutput = 'Thank you for flying with Spy Net.';
+    const speechOutput = 'Thank you for flying with Sky Net.';
     // Setting this to true ends the session and exits the skill.
     const shouldEndSession = true;
 
     callback({}, responseHelpers.buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
+  },
+
+  onSessionEnded: function(){
+    console.log('Ending session');
   }
 }
