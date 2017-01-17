@@ -46,8 +46,10 @@ exports.handler = (event, context, callback) => {
             message: 'skynet is ending its flight. Thank you for flying with us.'
           }
 
-          intentHandlers.sendMessage(callback, command);
+          // Give an anonymous, empty function for the callback to avoid errors with Alexa.
+          intentHandlers.sendCommand(function(){}, command);
 
+          // Call the callback here to let Alexa know the session has been ended gracefully.
           callback();
       }
   } catch (err) {
