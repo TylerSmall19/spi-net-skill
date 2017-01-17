@@ -6,14 +6,14 @@ Left left
 Left fly left
 Left go left
 Left issue left
-Right right
-Right fly right
-Right go right
-Right issue right
 Land land
 Land stop
 Land fall
 Land end
+Right right
+Right fly right
+Right go right
+Right issue right
 Up up
 Up climb
 Up gain altitude
@@ -22,3 +22,19 @@ Down down
 Down drop
 Down lose altitude
 Down descend
+Forward forward
+Forward move forward
+Forward fly forward
+Forward straight
+Forward fly straight
+Forward flystraight
+Forward move straight
+Back back
+Back skynet back
+Back fly back
+Back tell skynet back
+Back send skynet back
+Back send back
+Back issue back
+Back retreat back
+Back retreat

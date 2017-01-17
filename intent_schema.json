@@ -17,6 +17,12 @@
     },
     {
       "intent": "Down"
+    },
+    {
+      "intent": "Forward"
+    },
+    {
+      "intent": "Back"
     }
   ]
 }

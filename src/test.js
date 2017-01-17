@@ -18,7 +18,7 @@ var event = {
     "locale": "en-US",
     "timestamp": "2017-01-16T18:13:43Z",
     "intent": {
-      "name": "Fly",
+      "name": "Back",
       "slots": {}
     }
   },
@@ -28,7 +28,7 @@ var event = {
 var context = {}
 
 // Callback function upon request (Customize as needed for debugging application)
-var hollaBaq = function(err){ console.log(err); };
+var hollaBaq = function(err, response){ console.log(err, response); };
 
 // Calls the main application handler
 require('./index').handler(event, context, hollaBaq);

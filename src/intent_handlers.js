@@ -20,17 +20,20 @@ module.exports = {
       // console.log('Flying!');
       command = {
         command: 'FLY',
-        message: 'skynet is taking flight.'
+        message: 'skynet is taking flight.',
+        drone: 'Alpha'
       }
     } else if (intentName === 'Left') {
       command = {
         command: 'LEFT',
-        message: 'skynet is on its way left'
+        message: 'skynet is on its way left',
+        drone: 'Alpha'
       }
     } else if (intentName === 'Land'){
       command = {
         command: 'LAND',
-        message: 'skynet is on its way going down'
+        message: 'skynet is on its way going down',
+        drone: 'Alpha'
       }
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
         sessionHelpers.handleSessionEndRequest(callback);
@@ -41,7 +44,32 @@ module.exports = {
     } else if (intentName === 'Right') {
       command = {
         command: 'RIGHT',
-        message: 'skynet is going right'
+        message: 'skynet is going right',
+        drone: 'Alpha'
+      }
+    } else if (intentName === 'Up') {
+      command = {
+        command: 'UP',
+        message: 'skynet is going up',
+        drone: 'Alpha'
+      }
+    } else if (intentName === 'Down') {
+      command = {
+        command: 'DOWN',
+        message: 'skynet is going down',
+        drone: 'Alpha'
+      }
+    } else if (intentName === 'Forward') {
+      command = {
+        command: 'FORWARD',
+        message: 'skynet is moving forward',
+        drone: 'Alpha'
+      }
+    } else if (intentName === 'Back') {
+      command = {
+        command: 'BACK',
+        message: 'skynet is moving backward',
+        drone: 'Alpha'
       }
     } else {
         throw new Error('Invalid intent');
@@ -62,7 +90,7 @@ module.exports = {
     --------------------------------------------------------------------------- */
     var message = {
       "command" : command.command,
-      "drone"   : 'Alpha'
+      "drone"   : command.drone
     };
 
     pubnub.publish({
