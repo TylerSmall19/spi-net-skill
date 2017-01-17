@@ -53,7 +53,7 @@ module.exports = {
       // console.log('Flying!');
       command = {
         command: 'FLY',
-        message: 'telling the drones to fly'
+        message: 'skynet is taking flight.'
       }
     } else if (intentName === 'Left') {
       command = {
@@ -71,6 +71,11 @@ module.exports = {
           command: 'LAND',
           message: 'Drones are landing. Thank you for flying with Skynet.'
         }
+    } else if (intentName === 'Right') {
+      command = {
+        command: 'RIGHT',
+        message: 'skynet is going right'
+      }
     } else {
         throw new Error('Invalid intent');
     }
