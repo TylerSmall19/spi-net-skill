@@ -13,7 +13,7 @@ var event = {
     "new": false
   },
   "request": {
-    "type": "IntentRequest",
+    "type": "LaunchRequest",
     "requestId": "EdwRequestId.6c0242e1-272d-431a-a8d8-8199d6d96ced",
     "locale": "en-US",
     "timestamp": "2017-01-16T18:13:43Z",
@@ -28,7 +28,7 @@ var event = {
 var context = {}
 
 // Callback function upon request (Customize as needed for debugging application)
-var hollaBaq = function(err){ console.log(err); };
+var hollaBaq = function(err, response){ console.log(err, response); };
 
 // Calls the main application handler
 require('./index').handler(event, context, hollaBaq);
