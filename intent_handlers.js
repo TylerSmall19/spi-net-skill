@@ -49,7 +49,7 @@ module.exports = {
     var command = {};
 
     // Dispatch to your skill's intent handlers
-    if (intentName === 'Start'){
+    if (intentName === 'Fly'){
       // console.log('Flying!');
       command = {
         command: 'FLY',

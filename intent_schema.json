@@ -1,0 +1,16 @@
+{
+  "intents": [
+    {
+    "intent": "Fly"
+    },
+    {
+      "intent": "Left"
+    },
+    {
+      "intent": "Right"
+    },
+    {
+      "intent": "Land"
+    }
+  ]
+}
