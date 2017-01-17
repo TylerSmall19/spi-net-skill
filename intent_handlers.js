@@ -1,6 +1,7 @@
 'use strict';
 
 var responseHelpers = require('./response_helpers');
+var sessionHelpers  = require('./session_helpers');
 // Handlers for the commands/behaviors
 
 function sendCommand (callback, command){
@@ -66,7 +67,7 @@ module.exports = {
         message: 'skynet is on its way going down'
       }
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
-        SESSION_HELPERS.handleSessionEndRequest(callback);
+        sessionHelpers.handleSessionEndRequest(callback);
         command = {
           command: 'LAND',
           message: 'Drones are landing. Thank you for flying with Skynet.'

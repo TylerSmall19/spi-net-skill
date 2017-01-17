@@ -17,7 +17,7 @@ Land end
 Up up
 Up climb
 Up gain altitude
-Up assend
+Up asscend
 Down down
 Down drop
 Down lose altitude
