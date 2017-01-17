@@ -71,6 +71,36 @@ module.exports = {
         message: 'skynet is moving backward',
         drone: 'Alpha'
       }
+    } else if (intentName === 'TurnLeft') {
+      command = {
+        command: 'TURNLEFT',
+        message: 'skynet is turning left',
+        drone: 'Alpha'
+      }
+    } else if (intentName === 'TurnRight') {
+      command = {
+        command: 'TURNRIGHT',
+        message: 'skynet is turning right',
+        drone: 'Alpha'
+      }
+    } else if (intentName === 'FrontFlip') {
+      command = {
+        command: 'FRONTFLIP',
+        message: 'skynet is doing a front flip',
+        drone: 'Alpha'
+      }
+    } else if (intentName === 'BackFlip') {
+      command = {
+        command: 'BACKFLIP',
+        message: 'skynet is doing a back flip',
+        drone: 'Alpha'
+      }
+    } else if (intentName === 'Patrol') {
+      command = {
+        command: 'PATROL',
+        message: 'skynet is patrolling',
+        drone: 'Alpha'
+      }
     } else {
         throw new Error('Invalid intent');
     }
