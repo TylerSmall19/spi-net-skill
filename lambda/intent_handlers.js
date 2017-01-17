@@ -14,6 +14,7 @@ function sendCommand(callback, command){
     "command" : command.command,
     "drone"   : 'Alpha'
   };
+
   pubnub.publish({
       channel   : process.env.PUB_NUB_CHANNEL_KEY,
       message   : message,
@@ -26,6 +27,8 @@ function sendCommand(callback, command){
   });
 
   const sessionAttributes = {};
+  console.log("are we here?")
+  console.log(callback.toString())
 
   callback(sessionAttributes,
       response_helpers.buildSpeechletResponse('Sky Net', command.message, 'I\'m sorry. I didn\' catch that.', true));

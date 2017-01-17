@@ -34,18 +34,18 @@ exports.handler = (event, context, callback) => {
                   callback(null, RESPONSE_HELPERS.buildResponse(sessionAttributes, speechletResponse));
               });
       } else if (event.request.type === 'IntentRequest') {
-          console.log('Intent Requested!');
-          callback(null,
-            RESPONSE_HELPERS.buildResponse({},
-              RESPONSE_HELPERS.buildSpeechletResponse(
-                'Drone', 'output', 'repromptText', true)));
+          // console.log('Intent Requested!');
+          // callback(null,
+          //   RESPONSE_HELPERS.buildResponse({},
+          //     RESPONSE_HELPERS.buildSpeechletResponse(
+          //       'Drone', 'output', 'repromptText', true)));
 
-          // INTENT_HANDLERS.onIntent(event.request,
-          //     event.session,
-          //     (sessionAttributes, speechletResponse) => {
-
-          //         callback(null, RESPONSE_HELPERS.buildResponse(sessionAttributes, speechletResponse));
-          //     });
+          INTENT_HANDLERS.onIntent(event.request,
+              event.session,
+              (sessionAttributes, speechletResponse) => {
+                      console.log('Whhhhhhhyyyy');
+                  callback(null, RESPONSE_HELPERS.buildResponse(sessionAttributes, speechletResponse));
+              });
       } else if (event.request.type === 'SessionEndedRequest') {
           SESSION_HELPERS.onSessionEnded(event.request, event.session);
           callback();
