@@ -117,13 +117,12 @@ module.exports = {
 
     var eventType = ':tell';
 
-    if (command.remprompt){
+    if (command.reprompt){
       eventType = ':ask';
     }
 
-    alexaHandler.emit(eventType, command.message);
-
-    console.log("Getting past the callback");
+    // Emits :ask or :tell, with reMessage being the reprompt message
+    alexaHandler.emit(eventType, command.message, command.reMessage);
 
     var message = {
       "command" : command.command,
@@ -141,10 +140,5 @@ module.exports = {
         console.log( "FAILED! RETRY PUBLISH!", e );
       }
     });
-
-    // var sessionAttributes = {};
-
-    // callback(sessionAttributes,
-      // responseHelpers.buildSpeechletResponse('Sky Net', command.message, 'I\'m sorry. I didn\' catch that.', false));
   }
 }

@@ -20,10 +20,10 @@ exports.handler = function(event, context, callback){
 
 var handlers = {
   "Fly": buildHandler({
-    command : 'FLY',
-    message : 'skynet is taking flight.',
-    drone   : 'Alpha',
-    reprompt: true
+    command  : 'FLY',
+    message  : 'skynet is taking flight.',
+    drone    : 'Alpha',
+    reprompt : true
   }),
   "Back": buildHandler({
     command : 'BACK',
@@ -37,13 +37,18 @@ var handlers = {
 function unhandledIntent () {
   this.emit(
     ':ask',
-    'I did not understand your request.',
-    'Please give a flight command for SkyNet.'
+    'I did not understand your request.',      //output
+    'Please give a flight command for SkyNet.' // reprompt
   )
 }
 
 // Intent Builder Helpers
 function buildHandler(command) {
+
+  if (command.reprompt && !command.reMessage){
+    command.reMessage = 'I\'m sorry. I didn\'t catch that.';
+  }
+
   return function(event, context) {
     intentHandlers.sendCommand(this, command); //keep an eye on "this"
   }
