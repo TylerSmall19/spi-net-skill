@@ -108,16 +108,23 @@ module.exports = {
   },
 
   // Handlers for the commands/behaviors
-  sendCommand: function (callback, command) {
+  sendCommand: function (alexaHandler, command, callback) {
     var pubnub = require("pubnub")({
         ssl           : true,  // <- enable TLS Tunneling over TCP
         publish_key   : process.env.PUB_NUB_PUBLISH_KEY,
         subscribe_key : process.env.PUB_NUB_SUBSCRIBE_KEY
     });
 
-    /* ---------------------------------------------------------------------------
-    Publish Messages
-    --------------------------------------------------------------------------- */
+    var eventType = ':tell';
+
+    if (command.remprompt){
+      eventType = ':ask';
+    }
+
+    alexaHandler.emit(eventType, command.message);
+
+    console.log("Getting past the callback");
+
     var message = {
       "command" : command.command,
       "drone"   : command.drone
@@ -135,9 +142,9 @@ module.exports = {
       }
     });
 
-    var sessionAttributes = {};
+    // var sessionAttributes = {};
 
-    callback(sessionAttributes,
-      responseHelpers.buildSpeechletResponse('Sky Net', command.message, 'I\'m sorry. I didn\' catch that.', false));
+    // callback(sessionAttributes,
+      // responseHelpers.buildSpeechletResponse('Sky Net', command.message, 'I\'m sorry. I didn\' catch that.', false));
   }
 }

@@ -18,14 +18,17 @@ var event = {
     "locale": "en-US",
     "timestamp": "2017-01-16T18:13:43Z",
     "intent": {
-      "name": "Back",
+      "name": "Girraffe",
       "slots": {}
     }
   },
   "version": "1.0"
 }
 
-var context = {}
+var context = {
+  succeed: function(response){ console.log("success!", response); },
+  fail   : function(err){ console.log("failure!", err); }
+}
 
 // Callback function upon request (Customize as needed for debugging application)
 var hollaBaq = function(err, response){ console.log(err, response); };

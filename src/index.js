@@ -6,53 +6,45 @@ var sessionHelpers  = require('./session_helpers');
 var responseHelpers = require('./response_helpers');
 var appHandlers     = require('./app_handlers');
 
-// Route the incoming request based on type (LaunchRequest, IntentRequest,
-// etc.) The JSON body of the request is provided in the event parameter.
-exports.handler = (event, context, callback) => {
-  try {
-      // console.log(`event.session.application.applicationId=${event.session.application.applicationId}`);
+var Alexa = require('alexa-sdk');
 
-      /**
-       * Uncomment this if statement and populate with your skill's application ID to
-       * prevent someone else from configuring a skill that sends requests to this function.
-       */
+exports.handler = function(event, context, callback){
+    console.log('Executing');
+    var alexa = Alexa.handler(event, context);
+    alexa.appId = process.env.AMAZON_APP_KEY;
 
-      if (event.session.application.applicationId !== process.env.AMAZON_APP_KEY) {
-          callback('Invalid Application ID');
-      }
+    alexa.registerHandlers(handlers);
 
+    alexa.execute();
+};
 
-      if (event.session.new) {
-          sessionHelpers.onSessionStarted({ requestId: event.request.requestId }, event.session);
-      }
+var handlers = {
+  "Fly": buildHandler({
+    command : 'FLY',
+    message : 'skynet is taking flight.',
+    drone   : 'Alpha',
+    reprompt: true
+  }),
+  "Back": buildHandler({
+    command : 'BACK',
+    message : 'skynet is flying back',
+    drone   : 'Alpha',
+    reprompt: true
+  }),
+  "Unhandled": unhandledIntent
+}
 
-      if (event.request.type === 'LaunchRequest') {
-          appHandlers.onLaunch(event.request,
-              event.session,
-              (sessionAttributes, speechletResponse) => {
-                  callback(null, responseHelpers.buildResponse(sessionAttributes, speechletResponse));
-              });
-      } else if (event.request.type === 'IntentRequest') {
-          intentHandlers.onIntent(event.request,
-              event.session,
-              function(sessionAttributes, speechletResponse) {
-                  callback(null, responseHelpers.buildResponse(sessionAttributes, speechletResponse));
-              });
-      } else if (event.request.type === 'SessionEndedRequest') {
-          sessionHelpers.onSessionEnded(event.request, event.session);
+function unhandledIntent () {
+  this.emit(
+    ':ask',
+    'I did not understand your request.',
+    'Please give a flight command for SkyNet.'
+  )
+}
 
-          var command = {
-            command: 'LAND',
-            message: 'skynet is ending its flight. Thank you for flying with us.'
-          }
-
-          // Give an anonymous, empty function for the callback to avoid errors with Alexa.
-          intentHandlers.sendCommand(function(){}, command);
-
-          // Call the callback here to let Alexa know the session has been ended gracefully.
-          callback();
-      }
-  } catch (err) {
-      callback(err);
+// Intent Builder Helpers
+function buildHandler(command) {
+  return function(event, context) {
+    intentHandlers.sendCommand(this, command); //keep an eye on "this"
   }
 }
