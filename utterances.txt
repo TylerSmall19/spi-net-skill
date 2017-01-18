@@ -63,6 +63,7 @@ FrontFlip flip forward
 FrontFlip front flip
 FrontFlip forward flip
 FrontFlip impress me
+FrontFlip evasive maneuvers
 
 BackFlip flip backward
 BackFlip backward flip
