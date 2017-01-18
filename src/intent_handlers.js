@@ -121,8 +121,6 @@ module.exports = {
       eventType = ':ask';
     }
 
-    // Emits :ask or :tell, with reMessage being the reprompt message
-    alexaHandler.emit(eventType, command.message, command.reMessage);
 
     var message = {
       "command" : command.command,
@@ -133,10 +131,14 @@ module.exports = {
       channel   : process.env.PUB_NUB_CHANNEL_KEY,
       message   : message,
       callback  : function(e) {
+        // Emits :ask or :tell, with reMessage being the reprompt message
+        alexaHandler.emit(eventType, command.message, command.reMessage);
+
         console.log('Message Sent! Goodbye, cruel world...');
         pubnub.shutdown();
       },
       error     : function(e) {
+        alexaHandler.emit(':tell', "I was not able to issue this command.");
         console.log( "FAILED! RETRY PUBLISH!", e );
       }
     });
