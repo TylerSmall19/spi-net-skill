@@ -9,10 +9,11 @@
   },
   "author": {
     "email": "tylersmall.user@gmail.com",
-    "name" : "Jon Higgenson, Tyler Small, Kevin Goltermann"
+    "name": "Jon Higgenson, Tyler Small, Kevin Goltermann"
   },
   "license": "ISC",
   "dependencies": {
+    "alexa-sdk": "^1.0.6",
     "dotenv": "^4.0.0",
     "pubnub": "^3.7.14"
   }
