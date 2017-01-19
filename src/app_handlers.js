@@ -8,7 +8,7 @@ module.exports = {
     var command = {
       command: '',
       message: 'Welcome to the Skynet Drone interface. The drones are at your command.',
-
+      drone: 'Alpha'
     }
     intentHandlers.sendCommand(callback, command);
   }
